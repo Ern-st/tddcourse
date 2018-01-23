@@ -74,6 +74,8 @@ class MyFraction:
 
     def divide(self, dividee):
         frac1, frac2 = self.__commonDenominator(self, dividee)
+        if str(frac2) == "0":
+            raise ValueError("You cannot divide by Zero!")
         resultNumerator = frac1.numerator * frac2.denominator
         resultDenominator = frac1.denominator * frac2.numerator
         lowestTerm = self.__lowestTerms(resultNumerator, resultDenominator)

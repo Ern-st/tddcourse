@@ -89,3 +89,9 @@ class TestFractions(unittest.TestCase):
         frac2 = Fraction(7)
         result = frac1.divide(frac2)
         self.assertEqual("1/3", str(result))
+
+    def test_divideFractionWithZero(self):
+        frac1 = Fraction(7, 3)
+        frac2 = Fraction(7, 0)
+        with self.assertRaises(ValueError):
+            result = frac1.divide(frac2)
