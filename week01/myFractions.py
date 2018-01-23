@@ -51,12 +51,14 @@ class MyFraction:
             'denominator': int(denominator / lowestTerm)
             }
 
-
-    def getWholeNumber(self):
-        return int(self.numerator / self.denominator)
-
     def add(self, addend):
         frac1, frac2 = self.__commonDenominator(self, addend)
         result = frac1.numerator + frac2.numerator
+        lowestTerm = self.__lowestTerms(result, frac1.denominator)
+        return MyFraction(lowestTerm['numerator'], lowestTerm['denominator'])
+
+    def subtract(self, subtractee):
+        frac1, frac2 = self.__commonDenominator(self, subtractee)
+        result = frac1.numerator - frac2.numerator
         lowestTerm = self.__lowestTerms(result, frac1.denominator)
         return MyFraction(lowestTerm['numerator'], lowestTerm['denominator'])

@@ -8,6 +8,10 @@ class TestFractions(unittest.TestCase):
         fraction = Fraction.fromString("2/2")
         self.assertEqual("1", str(fraction))
 
+    def test_toString(self):
+        frac = Fraction(2, 7)
+        self.assertEqual("2/7", str(frac))
+
     def test_isEqual(self):
         fraction = Fraction(3, 3)
         self.assertEqual("1", str(fraction))
@@ -56,11 +60,8 @@ class TestFractions(unittest.TestCase):
         with self.assertRaises(TypeError):
             frac = Fraction(4, 3.14)
 
-    def test_toString(self):
-        frac = Fraction(2, 7)
-        self.assertEqual("2/7", str(frac))
-
-    # def test_addTwoWholeNumbers(self):
-    #     frac1 = Fraction(4)
-    #     frac2 = Fraction(9)
-    #     self.assertEqual(13, frac1.add(frac2))
+    def test_subtractTwoFractionsWithDifferentDenominators(self):
+        frac1 = Fraction(7, 3)
+        frac2 = Fraction(4, 5)
+        result = frac1.subtract(frac2)
+        self.assertEqual("23/15", str(result))
