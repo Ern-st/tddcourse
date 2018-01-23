@@ -3,13 +3,20 @@
 class MyFraction:
 
     def __init__(self, numerator, denominator = 1):
+        if type(numerator) is not int or type(denominator) is not int:
+            raise(TypeError("You can only use Integers for MyFractions or strings with the 'fromString' method"))
         lowestTerm = self.__lowestTerms(numerator, denominator)
         self.numerator = lowestTerm['numerator']
         self.denominator = lowestTerm['denominator']
 
     def __str__(self):
-        return "{0}/{1}".format(self.numerator, self.denominator)
-    
+        if self.numerator == 0 or self.denominator == 0:
+            return "0"
+        elif self.numerator % self.denominator == 0:
+            return "{0}".format(int(self.numerator / self.denominator))
+        else:
+            return "{0}/{1}".format(self.numerator, self.denominator)
+
     def __repr__(self):
         return "myFraction({0}, {1})".format(self.numerator, self.denominator)
 
