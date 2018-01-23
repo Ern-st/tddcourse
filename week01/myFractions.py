@@ -36,10 +36,12 @@ class MyFraction:
     def __commonDenominator(self, frac1, frac2):
         if frac1.denominator != frac2.denominator:
             commonDenominator   = self.__leastCommonMultiple(frac1.denominator, frac2.denominator)
-            frac1.numerator     = int(frac1.numerator * (commonDenominator / frac1.denominator))
-            frac1.denominator   = commonDenominator
-            frac2.numerator     = int(frac2.numerator * (commonDenominator / frac2.denominator))
-            frac2.denominator   = commonDenominator
+            if frac1.denominator != 0:
+                frac1.numerator     = int(frac1.numerator * (commonDenominator / frac1.denominator))
+                frac1.denominator   = commonDenominator
+            if frac2.denominator != 0:
+                frac2.numerator     = int(frac2.numerator * (commonDenominator / frac2.denominator))
+                frac2.denominator   = commonDenominator
         return frac1, frac2
 
     def __lowestTerms(self, numerator, denominator):
@@ -67,5 +69,12 @@ class MyFraction:
         frac1, frac2 = self.__commonDenominator(self, multiplee)
         resultNumerator = frac1.numerator * frac2.numerator
         resultDenominator = frac1.denominator * frac2.denominator
+        lowestTerm = self.__lowestTerms(resultNumerator, resultDenominator)
+        return MyFraction(lowestTerm['numerator'], lowestTerm['denominator'])
+
+    def divide(self, dividee):
+        frac1, frac2 = self.__commonDenominator(self, dividee)
+        resultNumerator = frac1.numerator * frac2.denominator
+        resultDenominator = frac1.denominator * frac2.numerator
         lowestTerm = self.__lowestTerms(resultNumerator, resultDenominator)
         return MyFraction(lowestTerm['numerator'], lowestTerm['denominator'])

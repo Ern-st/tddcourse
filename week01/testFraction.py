@@ -77,3 +77,15 @@ class TestFractions(unittest.TestCase):
         frac2 = Fraction(4, 3)
         result = frac1.multiply(frac2)
         self.assertEqual("28/9", str(result))
+
+    def test_divideTwoFractionsWithSameDenominators(self):
+        frac1 = Fraction(7, 3)
+        frac2 = Fraction(4, 3)
+        result = frac1.divide(frac2)
+        self.assertEqual("7/4", str(result))
+
+    def test_divideFractionWithWholeNumber(self):
+        frac1 = Fraction(7, 3)
+        frac2 = Fraction(7)
+        result = frac1.divide(frac2)
+        self.assertEqual("1/3", str(result))
