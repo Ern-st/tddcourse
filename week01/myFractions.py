@@ -6,6 +6,9 @@ class MyFraction:
         self.numerator = numerator
         self.denominator = denominator
 
+    def __str__(self):
+        return "{0}/{1}".format(self.numerator, self.denominator)
+
     @classmethod
     def fromString(cls, fractionString):
         numerator, denominator = [ int(x) for x in fractionString.split("/") ]
@@ -16,4 +19,9 @@ class MyFraction:
         return int(self.numerator / self.denominator)
 
     def add(self, addend):
-        return 1
+        #compare denominators
+        if self.denominator != addend.denominator:
+            #do some calc here to find the lowest common denominator
+            pass
+        result = self.numerator + addend.numerator
+        return MyFraction(result, self.denominator)
