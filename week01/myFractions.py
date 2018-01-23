@@ -51,8 +51,8 @@ class MyFraction:
             'denominator': int(denominator / lowestTerm)
             }
 
-    def add(self, addend):
-        frac1, frac2 = self.__commonDenominator(self, addend)
+    def add(self, addendee):
+        frac1, frac2 = self.__commonDenominator(self, addendee)
         result = frac1.numerator + frac2.numerator
         lowestTerm = self.__lowestTerms(result, frac1.denominator)
         return MyFraction(lowestTerm['numerator'], lowestTerm['denominator'])
@@ -61,4 +61,11 @@ class MyFraction:
         frac1, frac2 = self.__commonDenominator(self, subtractee)
         result = frac1.numerator - frac2.numerator
         lowestTerm = self.__lowestTerms(result, frac1.denominator)
+        return MyFraction(lowestTerm['numerator'], lowestTerm['denominator'])
+
+    def multiply(self, multiplee):
+        frac1, frac2 = self.__commonDenominator(self, multiplee)
+        resultNumerator = frac1.numerator * frac2.numerator
+        resultDenominator = frac1.denominator * frac2.denominator
+        lowestTerm = self.__lowestTerms(resultNumerator, resultDenominator)
         return MyFraction(lowestTerm['numerator'], lowestTerm['denominator'])

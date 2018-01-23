@@ -65,3 +65,15 @@ class TestFractions(unittest.TestCase):
         frac2 = Fraction(4, 5)
         result = frac1.subtract(frac2)
         self.assertEqual("23/15", str(result))
+
+    def test_subtractTwoFractionsWithSameDenominators(self):
+        frac1 = Fraction(7, 3)
+        frac2 = Fraction(4, 3)
+        result = frac1.subtract(frac2)
+        self.assertEqual("1", str(result))
+
+    def test_multiplyTwoFractionsWithSameDenominators(self):
+        frac1 = Fraction(7, 3)
+        frac2 = Fraction(4, 3)
+        result = frac1.multiply(frac2)
+        self.assertEqual("28/9", str(result))
