@@ -18,7 +18,13 @@ class TestFractions(unittest.TestCase):
         result = frac1.add(frac2)
         self.assertEqual("0/0", str(result))
 
-    def test_addTwoFractions(self):
+    def test_addTwoFractionsWithSameDenominators(self):
+        frac1 = Fraction(1, 4)
+        frac2 = Fraction(1, 4)
+        result = frac1.add(frac2)
+        self.assertEqual("2/4", str(result))
+
+    def test_addTwoFractionsWithDifferentDenominators(self):
         frac1 = Fraction(1, 4)
         frac2 = Fraction(1, 2)
         result = frac1.add(frac2)

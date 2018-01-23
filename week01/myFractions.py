@@ -15,13 +15,27 @@ class MyFraction:
         #print("num: {0} den: {1} input:{2}".format(numerator, denominator, fractionString))
         return cls(numerator, denominator)
 
+    def __highestCommonFactor(self, a, b):
+        if b == 0:
+            return a
+        return self.__highestCommonFactor(b, a%b)
+
+    def __leastCommonMultiple(self, a,b):
+        return int(a*b / self.__highestCommonFactor(a,b))
+
+    def __commonDenominator(self, frac1, frac2):
+        if frac1.denominator != frac2.denominator:
+            commonDenominator = self.__leastCommonMultiple(frac1.denominator, frac2.denominator)
+            frac1.numerator     = int(frac1.numerator * (commonDenominator / frac1.denominator))
+            frac1.denominator   = commonDenominator
+            frac2.numerator     = int(frac2.numerator * (commonDenominator / frac2.denominator))
+            frac2.denominator   = commonDenominator
+        return frac1, frac2
+
     def getWholeNumber(self):
         return int(self.numerator / self.denominator)
 
     def add(self, addend):
-        #compare denominators
-        if self.denominator != addend.denominator:
-            #do some calc here to find the lowest common denominator
-            pass
-        result = self.numerator + addend.numerator
-        return MyFraction(result, self.denominator)
+        frac1, frac2 = self.__commonDenominator(self, addend)
+        result = frac1.numerator + frac2.numerator
+        return MyFraction(result, frac1.denominator)
