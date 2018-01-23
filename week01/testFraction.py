@@ -13,8 +13,8 @@ class TestFractions(unittest.TestCase):
         self.assertEqual(1, fraction.getWholeNumber())
 
     def test_addTwoZeroFractions(self):
-        frac1 = Fraction(0, 0)
-        frac2 = Fraction(0, 0)
+        frac1 = Fraction(0, 4)
+        frac2 = Fraction(0, 20)
         result = frac1.add(frac2)
         self.assertEqual("0/0", str(result))
 
@@ -22,13 +22,19 @@ class TestFractions(unittest.TestCase):
         frac1 = Fraction(1, 4)
         frac2 = Fraction(1, 4)
         result = frac1.add(frac2)
-        self.assertEqual("2/4", str(result))
+        self.assertEqual("1/2", str(result))
 
     def test_addTwoFractionsWithDifferentDenominators(self):
         frac1 = Fraction(1, 4)
         frac2 = Fraction(1, 2)
         result = frac1.add(frac2)
         self.assertEqual("3/4", str(result))
+
+    def test_addTwoFractionsAndReduce(self):
+        frac1 = Fraction(4, 4)
+        frac2 = Fraction(1, 2)
+        result = frac1.add(frac2)
+        self.assertEqual("3/2", str(result))
 
     def test_toString(self):
         frac = Fraction(2, 7)
