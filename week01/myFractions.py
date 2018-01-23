@@ -3,11 +3,15 @@
 class MyFraction:
 
     def __init__(self, numerator, denominator = 1):
-        self.numerator = numerator
-        self.denominator = denominator
+        lowestTerm = self.__lowestTerms(numerator, denominator)
+        self.numerator = lowestTerm['numerator']
+        self.denominator = lowestTerm['denominator']
 
     def __str__(self):
         return "{0}/{1}".format(self.numerator, self.denominator)
+    
+    def __repr__(self):
+        return "myFraction({0}, {1})".format(self.numerator, self.denominator)
 
     @classmethod
     def fromString(cls, fractionString):
@@ -33,12 +37,13 @@ class MyFraction:
 
     def __lowestTerms(self, numerator, denominator):
         if numerator == 0:
-            return MyFraction(numerator, 0)
+            return {'numerator': 0, 'denominator': 0}
         lowestTerm = self.__highestCommonFactor(numerator, denominator)
-        return MyFraction(
-            int(numerator / lowestTerm),
-            int(denominator / lowestTerm)
-        )
+        return  {
+            'numerator': int(numerator / lowestTerm), 
+            'denominator': int(denominator / lowestTerm)
+            }
+
 
     def getWholeNumber(self):
         return int(self.numerator / self.denominator)
@@ -46,5 +51,5 @@ class MyFraction:
     def add(self, addend):
         frac1, frac2 = self.__commonDenominator(self, addend)
         result = frac1.numerator + frac2.numerator
-        result = self.__lowestTerms(result, frac1.denominator)
-        return result
+        lowestTerm = self.__lowestTerms(result, frac1.denominator)
+        return MyFraction(lowestTerm['numerator'], lowestTerm['denominator'])

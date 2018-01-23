@@ -30,6 +30,10 @@ class TestFractions(unittest.TestCase):
         result = frac1.add(frac2)
         self.assertEqual("3/4", str(result))
 
+    def test_reduction(self):
+        frac = Fraction(6, 4)
+        self.assertEqual("3/2", str(frac))
+
     def test_addTwoFractionsAndReduce(self):
         frac1 = Fraction(4, 4)
         frac2 = Fraction(1, 2)
@@ -39,10 +43,6 @@ class TestFractions(unittest.TestCase):
     def test_toString(self):
         frac = Fraction(2, 7)
         self.assertEqual("2/7", str(frac))
-
-    # def test_lowestTerms(self):
-    #     frac = Fraction.fromString("4/6")
-    #     self.assertEqual("2/3", frac)
 
     # def test_addTwoWholeNumbers(self):
     #     frac1 = Fraction(4)
