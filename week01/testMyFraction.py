@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import unittest
-from myFractions import MyFraction as Fraction
+from MyFraction import MyFraction as Fraction
 
 class TestFractions(unittest.TestCase):
 
@@ -56,7 +56,7 @@ class TestFractions(unittest.TestCase):
         result = frac1.add(frac2)
         self.assertEqual("-11/12", str(result))
 
-    def test_creatingAFractionFromAFloat(self):
+    def test_creatingAFractionFromAFloatShouldRaiseTypeError(self):
         with self.assertRaises(TypeError):
             frac = Fraction(4, 3.14)
 
@@ -95,3 +95,16 @@ class TestFractions(unittest.TestCase):
         frac2 = Fraction(7, 0)
         with self.assertRaises(ValueError):
             result = frac1.divide(frac2)
+
+    def test_chainingMultipleOperations(self):
+        # ((7/3) + ((45/7) - ((-7/2) * ((12/8) / (4/9)))))
+        frac1 = Fraction(7, 3)
+        frac2 = Fraction(45, 7)
+        frac3 = Fraction(-7, 2)
+        frac4 = Fraction(12, 8)
+        frac5 = Fraction(4, 9)
+        result = frac1.add(
+                frac2.subtract(
+                    frac3.multiply(
+                        frac4.divide(frac5))))
+        self.assertEqual("6913/336", str(result))

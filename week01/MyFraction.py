@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 class MyFraction:
-    """A very naive implementation of Fraction magi^H^H^H^H^H math"""
+    """A very naive implementation of Fraction magi^H^H^H^H math"""
 
     def __init__(self, numerator, denominator = 1):
         if type(numerator) is not int or type(denominator) is not int:
@@ -19,7 +19,7 @@ class MyFraction:
             return "{0}/{1}".format(self.numerator, self.denominator)
 
     def __repr__(self):
-        return "myFraction({0}, {1})".format(self.numerator, self.denominator)
+        return "MyFraction({0}, {1})".format(self.numerator, self.denominator)
 
     @classmethod
     def fromString(cls, fractionString):
