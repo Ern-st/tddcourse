@@ -19,25 +19,25 @@ class TestFractions(unittest.TestCase):
     def test_addTwoZeroFractions(self):
         frac1 = Fraction(0, 4)
         frac2 = Fraction(0, 0)
-        result = frac1.add(frac2)
+        result = frac1 + frac2
         self.assertEqual("0", str(result))
 
     def test_addTwoWholeNumbers(self):
         frac1 = Fraction(9)
         frac2 = Fraction(4)
-        result = frac1.add(frac2)
+        result = frac1 + frac2
         self.assertEqual("13", str(result))
 
     def test_addTwoFractionsWithSameDenominators(self):
         frac1 = Fraction(1, 4)
         frac2 = Fraction(1, 4)
-        result = frac1.add(frac2)
+        result = frac1 + frac2
         self.assertEqual("1/2", str(result))
 
     def test_addTwoFractionsWithDifferentDenominators(self):
         frac1 = Fraction(7, 3)
         frac2 = Fraction(4, 5)
-        result = frac1.add(frac2)
+        result = frac1 + frac2
         self.assertEqual("47/15", str(result))
 
     def test_reduction(self):
@@ -47,13 +47,13 @@ class TestFractions(unittest.TestCase):
     def test_addTwoFractionsAndReduce(self):
         frac1 = Fraction(4, 4)
         frac2 = Fraction(1, 2)
-        result = frac1.add(frac2)
+        result = frac1 + frac2
         self.assertEqual("3/2", str(result))
 
     def test_addANegativeNumberToAPositiveFraction(self):
         frac1 = Fraction(3, 4)
         frac2 = Fraction(-10, 6)
-        result = frac1.add(frac2)
+        result = frac1 + frac2
         self.assertEqual("-11/12", str(result))
 
     def test_creatingAFractionFromAFloatShouldRaiseTypeError(self):
@@ -63,48 +63,44 @@ class TestFractions(unittest.TestCase):
     def test_subtractTwoFractionsWithDifferentDenominators(self):
         frac1 = Fraction(7, 3)
         frac2 = Fraction(4, 5)
-        result = frac1.subtract(frac2)
+        result = frac1 - frac2
         self.assertEqual("23/15", str(result))
 
     def test_subtractTwoFractionsWithSameDenominators(self):
         frac1 = Fraction(7, 3)
         frac2 = Fraction(4, 3)
-        result = frac1.subtract(frac2)
+        result = frac1 - frac2
         self.assertEqual("1", str(result))
 
     def test_multiplyTwoFractionsWithSameDenominators(self):
         frac1 = Fraction(7, 3)
         frac2 = Fraction(4, 3)
-        result = frac1.multiply(frac2)
+        result = frac1 * frac2
         self.assertEqual("28/9", str(result))
 
     def test_divideTwoFractionsWithSameDenominators(self):
         frac1 = Fraction(7, 3)
         frac2 = Fraction(4, 3)
-        result = frac1.divide(frac2)
+        result = frac1 / frac2
         self.assertEqual("7/4", str(result))
 
     def test_divideFractionWithWholeNumber(self):
         frac1 = Fraction(7, 3)
         frac2 = Fraction(7)
-        result = frac1.divide(frac2)
+        result = frac1 / frac2
         self.assertEqual("1/3", str(result))
 
     def test_divideFractionWithZero(self):
         frac1 = Fraction(7, 3)
         frac2 = Fraction(7, 0)
         with self.assertRaises(ValueError):
-            result = frac1.divide(frac2)
+            result = frac1 / frac2
 
     def test_chainingMultipleOperations(self):
-        # ((7/3) + ((45/7) - ((-7/2) * ((12/8) / (4/9)))))
         frac1 = Fraction(7, 3)
         frac2 = Fraction(45, 7)
         frac3 = Fraction(-7, 2)
         frac4 = Fraction(12, 8)
         frac5 = Fraction(4, 9)
-        result = frac1.add(
-                frac2.subtract(
-                    frac3.multiply(
-                        frac4.divide(frac5))))
+        result = frac1 + frac2 - frac3 * frac4 / frac5
         self.assertEqual("6913/336", str(result))

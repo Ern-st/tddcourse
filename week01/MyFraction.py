@@ -62,12 +62,18 @@ class MyFraction:
         lowestTerm = self.__lowestTerms(result, frac1.denominator)
         return MyFraction(lowestTerm['numerator'], lowestTerm['denominator'])
 
+    def __add__(self, other):
+        return self.add(other)
+
     def subtract(self, subtractee):
         """Subtract a fraction from this fraction and return the result in a new object"""
         frac1, frac2 = self.__commonDenominator(self, subtractee)
         result = frac1.numerator - frac2.numerator
         lowestTerm = self.__lowestTerms(result, frac1.denominator)
         return MyFraction(lowestTerm['numerator'], lowestTerm['denominator'])
+
+    def __sub__(self, other):
+        return self.subtract(other)
 
     def multiply(self, multiplee):
         """Multiply a fraction with this fraction and return the result in a new object"""
@@ -76,6 +82,9 @@ class MyFraction:
         resultDenominator = frac1.denominator * frac2.denominator
         lowestTerm = self.__lowestTerms(resultNumerator, resultDenominator)
         return MyFraction(lowestTerm['numerator'], lowestTerm['denominator'])
+
+    def __mul__(self, other):
+        return self.multiply(other)
 
     def divide(self, dividee):
         """Divide a fraction by this fraction and return the result in a new object"""
@@ -86,3 +95,6 @@ class MyFraction:
         resultDenominator = frac1.denominator * frac2.numerator
         lowestTerm = self.__lowestTerms(resultNumerator, resultDenominator)
         return MyFraction(lowestTerm['numerator'], lowestTerm['denominator'])
+
+    def __truediv__(self, other):
+        return self.divide(other)
