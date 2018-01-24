@@ -4,6 +4,7 @@ class MyFraction:
     """A very naive implementation of Fraction magi^H^H^H^H math"""
 
     def __init__(self, numerator, denominator = 1):
+        """Create a new Fraction initialized with Integers"""
         if type(numerator) is not int or type(denominator) is not int:
             raise TypeError("You can only use Integers for MyFractions or strings with the 'fromString()' classmethod")
         lowestTerm = self.__lowestTerms(numerator, denominator)
@@ -11,6 +12,7 @@ class MyFraction:
         self.denominator = lowestTerm['denominator']
 
     def __str__(self):
+        """Returns an Integer if the numerator can be divided by the denominator and there is no remaninder, otherwise it just returns the Fraction""" 
         if self.numerator == 0 or self.denominator == 0:
             return "0"
         elif self.numerator % self.denominator == 0:
@@ -23,7 +25,7 @@ class MyFraction:
 
     @classmethod
     def fromString(cls, fractionString):
-        """creates a Fraction object from a string in the format 'x/y'"""
+        """creates a Fraction object from a string in the format \"x/y\""""
         numerator, denominator = [ int(x) for x in fractionString.split("/") ]
         return cls(numerator, denominator)
 
