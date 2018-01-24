@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import unittest
+from testfixtures import Comparison as C
 from MyFraction import MyFraction as Fraction
 
 class TestFractions(unittest.TestCase):
@@ -103,4 +104,5 @@ class TestFractions(unittest.TestCase):
         frac4 = Fraction(12, 8)
         frac5 = Fraction(4, 9)
         result = frac1 + frac2 - frac3 * frac4 / frac5
-        self.assertEqual("6913/336", str(result))
+        truth = C(Fraction, numerator=6913, denominator=336)
+        self.assertEqual(truth, result)
