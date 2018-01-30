@@ -1,4 +1,5 @@
 <?php
+require_once("/Users/ernst/Documents/tddcourse/week02/lib/PhonePlan.php");
 
 class PhonePlanTest extends \Codeception\Test\Unit
 {
@@ -18,7 +19,7 @@ class PhonePlanTest extends \Codeception\Test\Unit
     // tests
     public function testWeCanCreateAPhonePlanObject()
     {
-        $aPhonePlan = new PhonePlan;
+        $aPhonePlan = new PhonePlan();
         $this->assertInstanceOf(
             PhonePlan::class,
             $aPhonePlan

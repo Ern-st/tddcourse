@@ -1,4 +1,11 @@
-{
+{   
+    "name" : "PhonePlanCalc",
+    "description": "TDD project", 
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    },
     "require-dev": {
         "codeception/codeception": "^2.3"
     }
