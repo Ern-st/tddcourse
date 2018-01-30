@@ -9,4 +9,10 @@ final class PhonePlan
     {
         
     }
+
+    public function setPreferences($values)
+    {
+        $this->desiredData = $values["data"];
+        $this->desiredHours = $values["hours"];
+    }
 }

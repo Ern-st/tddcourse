@@ -28,5 +28,9 @@ class PhonePlanTest extends \Codeception\Test\Unit
         );
     }
 
-    //public function test
+    public function testWeCanSetPreferences()
+    {
+        $aPhonePlan = new PhonePlan();
+        $aPhonePlan->setPreferences(['data' => 20, 'hours' => 5]);
+    }
 }
