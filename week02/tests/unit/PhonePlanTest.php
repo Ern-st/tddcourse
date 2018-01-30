@@ -1,6 +1,8 @@
 <?php
 require_once("/Users/ernst/Documents/tddcourse/week02/lib/PhonePlan.php");
 
+//use week02;
+
 class PhonePlanTest extends \Codeception\Test\Unit
 {
     /**
@@ -25,4 +27,6 @@ class PhonePlanTest extends \Codeception\Test\Unit
             $aPhonePlan
         );
     }
+
+    //public function test
 }

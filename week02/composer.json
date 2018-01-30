@@ -2,8 +2,10 @@
     "name" : "PhonePlanCalc",
     "description": "TDD project", 
     "autoload": {
+        "psr-4":{
+            "week02\\": "lib/",
         "classmap": [
-            "src/"
+            "lib/"
         ]
     },
     "require-dev": {
