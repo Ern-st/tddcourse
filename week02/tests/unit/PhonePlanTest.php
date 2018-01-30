@@ -16,8 +16,12 @@ class PhonePlanTest extends \Codeception\Test\Unit
     }
 
     // tests
-    public function testSomeFeature()
+    public function testWeCanCreateAPhonePlanObject()
     {
-
+        $aPhonePlan = new PhonePlan;
+        $this->assertInstanceOf(
+            PhonePlan::class,
+            $aPhonePlan
+        );
     }
 }
