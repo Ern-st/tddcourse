@@ -33,4 +33,12 @@ class PhonePlanTest extends \Codeception\Test\Unit
         $aPhonePlan = new PhonePlan();
         $aPhonePlan->setPreferences(['data' => 20, 'hours' => 5]);
     }
+
+    public function testThatWeCanGetAllPhonePlans()
+    {
+        $aPhonePlan = new PhonePlan();
+        $allPlans = $aPhonePlan->getAllPlans();
+        //codecept_debug(print_r($allPlans, true));
+        $this->assertCount(9, $allPlans);
+    }
 }
