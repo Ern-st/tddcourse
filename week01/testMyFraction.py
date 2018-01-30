@@ -103,6 +103,6 @@ class TestFractions(unittest.TestCase):
         frac3 = Fraction(-7, 2)
         frac4 = Fraction(12, 8)
         frac5 = Fraction(4, 9)
-        result = frac1 + frac2 - frac3 * frac4 / frac5
-        truth = C(Fraction, numerator=6913, denominator=336)
-        self.assertEqual(truth, result)
+        actual = frac1 + frac2 - frac3 * frac4 / frac5
+        expected = C(Fraction, numerator=6913, denominator=336)
+        self.assertEqual(expected, actual)
