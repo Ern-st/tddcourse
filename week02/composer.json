@@ -2,8 +2,7 @@
     "name": "ernst/week02",
     "description": "TDD project",
     "type": "project",
-    "require": {},
-    "require-dev": {
+    "require": {
         "codeception/codeception": "^2.3"
     },
     "autoload": {

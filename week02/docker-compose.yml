@@ -6,5 +6,6 @@ nginx:
   volumes: 
     - .:/var/www/html/
   environment:
+    WEBROOT: /var/www/html/lib
     PGID: 1000
     PUID: 1000

@@ -6,7 +6,7 @@
         {
             "label": "run tests",
             "type": "shell",
-            "command": "./vendor/bin/codecept run unit --debug",
+            "command": "./vendor/bin/codecept run --debug",
             "group": "test",
             "presentation": {
                 "reveal": "always",
