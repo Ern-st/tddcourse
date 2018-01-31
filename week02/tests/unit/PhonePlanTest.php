@@ -46,14 +46,21 @@ class PhonePlanTest extends \Codeception\Test\Unit
         $aPhonePlan->setPreferences(['data' => 20, 'hours' => 20]);
         $bestplan = $aPhonePlan->getBestPlan();
         codecept_debug(print_r($bestplan, true));
-        $this->assertEquals(
+        $this->assertArraySubset(
             array(
-                'id' => 6,
                 'company' => 'Oister',
                 'plan' => 'P4',
-                'data' => 40,
-                'hours' => -1,
-                'price' => 129,
+            ),
+            $bestplan
+        );
+
+        $aPhonePlan->setPreferences(['data' => 2, 'hours' => -1]);
+        $bestplan = $aPhonePlan->getBestPlan();
+        codecept_debug(print_r($bestplan, true));
+        $this->assertArraySubset(
+            array(
+                'company' => 'Oister',
+                'plan' => 'P4',
             ),
             $bestplan
         );

@@ -39,6 +39,10 @@ final class PhonePlan
 
     public function getBestPlan()
     {
-        return $this->querydb("SELECT * FROM phoneplans WHERE data >= {$this->desiredData} AND (hours >= {$this->desiredHours} OR hours == -1) ORDER BY price, data DESC limit 1")[0];
+        if ($this->desiredHours == -1) {
+            return $this->querydb("SELECT * FROM phoneplans WHERE data >= {$this->desiredData} AND hours == {$this->desiredHours} ORDER BY price, data DESC limit 1")[0];
+        } else {
+            return $this->querydb("SELECT * FROM phoneplans WHERE data >= {$this->desiredData} AND (hours >= {$this->desiredHours} OR hours == -1) ORDER BY price, data DESC limit 1")[0];
+        }
     }
 }
