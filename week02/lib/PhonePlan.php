@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-//NameSpace week02;
+NameSpace week02;
 
 final class PhonePlan
 {
@@ -12,7 +12,7 @@ final class PhonePlan
 
     private function querydb($query)
     {
-        $db = new SQLite3('lib/database.db');
+        $db = new \SQLite3('lib/database.db');
         $db_results = $db->query($query);
         $result = array();
         while ($res = $db_results->fetchArray(1))

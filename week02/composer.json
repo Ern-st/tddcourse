@@ -1,14 +1,14 @@
-{   
-    "name" : "PhonePlanCalc",
-    "description": "TDD project", 
-    "autoload": {
-        "psr-4":{
-            "week02\\": "lib/",
-        "classmap": [
-            "lib/"
-        ]
-    },
+{
+    "name": "ernst/week02",
+    "description": "TDD project",
+    "type": "project",
+    "require": {},
     "require-dev": {
         "codeception/codeception": "^2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "week02\\": "lib"
+        }
     }
 }

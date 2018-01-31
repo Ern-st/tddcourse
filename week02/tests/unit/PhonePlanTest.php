@@ -1,7 +1,6 @@
 <?php
-require_once("/Users/ernst/Documents/tddcourse/week02/lib/PhonePlan.php");
 
-//use week02;
+use week02\PhonePlan as PhonePlan;
 
 class PhonePlanTest extends \Codeception\Test\Unit
 {
