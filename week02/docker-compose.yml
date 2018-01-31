@@ -9,3 +9,4 @@ nginx:
     WEBROOT: /var/www/html/lib
     PGID: 1000
     PUID: 1000
+    APPLICATION_ENV: development

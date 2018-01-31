@@ -65,6 +65,39 @@ function render_form($values = ["desiredData" => "", "desiredHours" => ""]){
             justify-content: center;
             align-items: center;
         }
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            -moz-appearance: none;
+            margin: 0; 
+        }
+        input[type=number]::-webkit-input-placeholder {
+            color: #FFF;
+        }
+        input[type="number"] {
+            -webkit-appearance: none;
+            outline: none;
+            border: none;
+            background: #0000ff80;
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            color: #FFF;
+            text-align: center;
+            border-radius: 50%;
+            position: relative;
+        }
+        input[name="desiredData"] {
+            right: -10px;
+        }
+        input[name="desiredHours"] {
+            left: -10px;
+            background: #ff000080;
+        }
+        input[type="submit"] {
+            display: block;
+            margin: 0 auto;
+        }
         table {
             border-radius: 3px;
             border-collapse: collapse;
