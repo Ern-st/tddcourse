@@ -18,7 +18,7 @@ class PhonePlanCest
         $I->see('HELLO HUMAN');
         $I->fillField('desiredData', '20');
         $I->fillField('desiredHours', '20');
-        $I->click('GOGOGO!');
+        $I->click('submit');
         $I->see('Oister', '.bestPlan');
         $I->see('P4', '.bestPlan');
     }

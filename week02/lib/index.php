@@ -42,7 +42,7 @@ function render_form($values = ["desiredData" => "", "desiredHours" => ""]){
     <form method="post">
         <input type="number" name="desiredData" placeholder="data" value="<?php echo $values['desiredData'] ?>">
         <input type="number" name="desiredHours" placeholder="hours" value="<?php echo $values['desiredHours'] ?>">
-        <input type="submit" value="GOGOGO!">
+        <input type="submit" name="submit" value="🤑">
     </form>
 <?php
 }
@@ -98,6 +98,12 @@ function render_form($values = ["desiredData" => "", "desiredHours" => ""]){
         input[type="submit"] {
             display: block;
             margin: 0 auto;
+            font-size: 80px;
+            cursor: pointer;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border: none;
         }
         table {
             border-radius: 3px;
