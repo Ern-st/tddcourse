@@ -8,6 +8,8 @@ $input = [
     "hours" => (int) filter_input(INPUT_GET, 'desiredHours', FILTER_SANITIZE_NUMBER_INT)
 ];
 
+header('Content-Type: application/json');
+
 try {
     $aPhonePlan = new PhonePlan($input);
     $bestPlan = $aPhonePlan->getBestPlan();
@@ -15,6 +17,5 @@ try {
     echo $response;
     die();
 } catch (Exception $e) {
-    echo("FAILED!");
     echo $e->getMessage();
 }

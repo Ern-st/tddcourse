@@ -10,3 +10,5 @@ nginx:
     PGID: 1000
     PUID: 1000
     APPLICATION_ENV: development
+    PHP_ERRORS_STDERR: "true"
+    REMOVE_FILES: 0

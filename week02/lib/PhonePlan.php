@@ -49,7 +49,7 @@ final class PhonePlan
 
     public function getAllPlans()
     {
-        return $this->querydb('SELECT * FROM phoneplans');
+        return $this->querydb('SELECT * FROM phoneplans ORDER BY price');
     }
 
     public function getBestPlan()

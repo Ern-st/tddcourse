@@ -40,8 +40,8 @@ function html_table($data = array())
 function render_form($values = ["desiredData" => "", "desiredHours" => ""]){
 ?>
     <form method="post">
-        <input type="number" name="desiredData" placeholder="data in GB" value="<?php echo $values['desiredData'] ?>">
-        <input type="number" name="desiredHours" placeholder="hours in hours" value="<?php echo $values['desiredHours'] ?>">
+        <input type="number" name="desiredData" placeholder="data" value="<?php echo $values['desiredData'] ?>">
+        <input type="number" name="desiredHours" placeholder="hours" value="<?php echo $values['desiredHours'] ?>">
         <input type="submit" value="GOGOGO!">
     </form>
 <?php
@@ -83,6 +83,7 @@ function render_form($values = ["desiredData" => "", "desiredHours" => ""]){
             width: 100px;
             height: 100px;
             color: #FFF;
+            font-size: 2rem;
             text-align: center;
             border-radius: 50%;
             position: relative;
