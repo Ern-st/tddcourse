@@ -8,7 +8,7 @@ class PhonePlanTest extends \Codeception\Test\Unit
      * @var \UnitTester
      */
     protected $tester;
-    
+
     protected function _before()
     {
     }
@@ -29,8 +29,7 @@ class PhonePlanTest extends \Codeception\Test\Unit
 
     public function testWeCanSetPreferences()
     {
-        $aPhonePlan = new PhonePlan();
-        $aPhonePlan->setPreferences(['data' => 20, 'hours' => 5]);
+        $aPhonePlan = new PhonePlan(['data' => 20, 'hours' => 5]);
     }
 
     public function testThatWeCanGetAllPhonePlans()
@@ -39,5 +38,24 @@ class PhonePlanTest extends \Codeception\Test\Unit
         $allPlans = $aPhonePlan->getAllPlans();
         //codecept_debug(print_r($allPlans, true));
         $this->assertCount(9, $allPlans);
+    }
+
+    public function testThatIGetTheCheapestPlan()
+    {
+        $aPhonePlan = new PhonePlan();
+        $aPhonePlan->setPreferences(['data' => 20, 'hours' => 20]);
+        $bestplan = $aPhonePlan->getBestPlan();
+        codecept_debug(print_r($bestplan, true));
+        $this->assertEquals(
+            array(
+                'id' => 6,
+                'company' => 'Oister',
+                'plan' => 'P4',
+                'data' => 40,
+                'hours' => -1,
+                'price' => 129,
+            ),
+            $bestplan
+        );
     }
 }
