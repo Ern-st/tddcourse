@@ -26,8 +26,23 @@ final class PhonePlan
         return $result;
     }
 
+    private function validatePreferences($values){
+        foreach ($values as $key => $value) {
+            if (!is_int($value)) {
+                throw new \Exception("You can only use Integers for your preferences, use -1 for infinite");
+            }
+        }
+    }
+
+    private function checkPreferences(){
+        if (!isset($this->desiredData) OR !isset($this->desiredHours)) {
+            throw new \Exception("You need to set the preferences before calling getBestPlan");
+        }
+    }
+
     public function setPreferences($values)
     {
+        $this->validatePreferences($values);
         $this->desiredData = $values['data'];
         $this->desiredHours = $values['hours'];
     }
@@ -39,6 +54,7 @@ final class PhonePlan
 
     public function getBestPlan()
     {
+        $this->checkPreferences();
         if ($this->desiredHours == -1) {
             return $this->querydb("SELECT * FROM phoneplans WHERE data >= {$this->desiredData} AND hours == {$this->desiredHours} ORDER BY price, data DESC limit 1")[0];
         } else {
