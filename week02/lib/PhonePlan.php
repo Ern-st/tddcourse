@@ -15,7 +15,7 @@ final class PhonePlan
 
     private function querydb($query)
     {
-        $db = new \SQLite3('lib/database.db');
+        $db = new \SQLite3(__DIR__ . '/database.db');
         $db_results = $db->query($query);
         $result = array();
         while ($res = $db_results->fetchArray(1)) {

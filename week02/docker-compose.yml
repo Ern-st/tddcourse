@@ -1,0 +1,10 @@
+nginx:
+  image: richarvey/nginx-php-fpm:latest
+  restart: always
+  ports: 
+    - 80:80
+  volumes: 
+    - .:/var/www/html/
+  environment:
+    PGID: 1000
+    PUID: 1000
