@@ -96,6 +96,7 @@ function render_form($values = ["desiredData" => "", "desiredHours" => ""]){
             background: #ff000080;
         }
         input[type="submit"] {
+            background: transparent;
             display: block;
             margin: 0 auto;
             font-size: 80px;
@@ -104,6 +105,11 @@ function render_form($values = ["desiredData" => "", "desiredHours" => ""]){
             -moz-appearance: none;
             appearance: none;
             border: none;
+            outline: none;
+            transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        input[type="submit"]:hover {
+            transform: scale(1.2);
         }
         table {
             border-radius: 3px;
