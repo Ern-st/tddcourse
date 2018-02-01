@@ -121,6 +121,29 @@ function render_form($values = ["desiredData" => "", "desiredHours" => ""]){
         .bestPlan{
             background: #7cea7c;
             font-weight: bold;
+            animation: ShineAnimation 5s forwards cubic-bezier(.12,.89,.98,.47);
+        }
+
+        @keyframes ShineAnimation{
+            from {
+                background-repeat:no-repeat;
+                background-image:-webkit-linear-gradient(
+                    top left,
+                    rgba(255, 255, 255, 0.0) 0%,
+                    rgba(255, 255, 255, 0.0) 45%,
+                    rgba(255, 255, 255, 0.5) 48%,
+                    rgba(255, 255, 255, 0.8) 50%,
+                    rgba(255, 255, 255, 0.5) 52%,
+                    rgba(255, 255, 255, 0.0) 57%,
+                    rgba(255, 255, 255, 0.0) 100%
+                );
+                background-position:-250px -250px;
+                background-size: 600px 600px
+            }
+            to {
+                background-repeat:no-repeat;
+                background-position:250px 250px;
+            }
         }
     </style>
 </head>
