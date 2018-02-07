@@ -43,8 +43,12 @@ class testMyStringAdder(unittest.TestCase):
         
         self.assertEqual(12, output)
 
-    def test_AddingBogusReturnsNaN(self):
+    def test_AddingBogusReturnsNaNAndLogsAnError(self):
         input = "Horse"
         output = self.MyStringAdder.addNumbers(input)
 
         self.assertEqual("NaN", output)
+        self.mock_logger.log.assert_called_once_with(input)
+
+    def test_thatTheAdderWorks(self):
+        pass

@@ -2,5 +2,6 @@
 
 class logger:
     
-    def logger(self, error):
-        print("error: {}".format(error))
+    def log(self, error):
+        with open('logfile.log', 'a') as logfile:
+            logfile.write('{}\n'.format(error))
