@@ -1,6 +1,13 @@
 #!/usr/bin/env python3
 
 class MyStringAdder:
+    """Adds all integers on a line
+
+    Takes 3 arguments:  
+    reader has a readArray() method, the method should return an array of strings  
+    writer has a write() method, the method should take a multiline string and write it somewhere  
+    logger has a log() method, that is used for logging errors  
+    """
 
     def __init__(self, reader, writer, logger):
         self.reader = reader
@@ -8,7 +15,7 @@ class MyStringAdder:
         self.logger = logger
 
     def loadInput(self):
-        self.input = self.reader.getContents()
+        self.input = self.reader.readArray()
 
     def getInput(self):
         return self.input
@@ -32,6 +39,7 @@ class MyStringAdder:
 
     def run(self):
         self.loadInput()
+        print(self.input)
         output = ""
         for line in self.input:
             result = self.addNumbers(line)

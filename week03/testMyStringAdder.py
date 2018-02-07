@@ -4,6 +4,7 @@ import unittest.mock as mock
 
 from MyStringAdder  import MyStringAdder
 from readerClass    import reader
+from readerClass    import webReader
 from writerClass    import writer
 from loggerClass    import logger
 
@@ -18,11 +19,13 @@ class testMyStringAdder(unittest.TestCase):
         self.mock_logger = mock_logger
 
         self.MyStringAdder = MyStringAdder(self.mock_reader, self.mock_writer, self.mock_logger)
+
+       #self.MyStringAdder = MyStringAdder(webReader({"url":"https://gist.githubusercontent.com/ernst-at-colourbox/3197dbb764785c309ea3af84d8a6727f/raw/c47d0cf76289cc54ad0dd437309f24752095f993/TDD_week03_input.txt"}), writer(), logger())
         #self.MyStringAdder = MyStringAdder(reader(), writer(), logger())
 
     def test_ICanLoadContents(self):
         expectedInput = ["test", "test2"]
-        self.mock_reader.getContents.return_value = expectedInput
+        self.mock_reader.readArray.return_value = expectedInput
         
         StringAdder = self.MyStringAdder
         StringAdder.loadInput()
@@ -42,12 +45,14 @@ class testMyStringAdder(unittest.TestCase):
         output = self.MyStringAdder.addNumbers(input)
         
         self.assertEqual(12, output)
+        self.mock_logger.log.assert_not_called()
 
     def test_AddingABlankLineReturnsZero(self):
         input = ""
         output = self.MyStringAdder.addNumbers(input)
 
         self.assertEqual(0, output)
+        self.mock_logger.log.assert_not_called()
 
     def test_AddingBogusReturnsNaNAndLogsAnError(self):
         input = "Horse"
@@ -58,10 +63,9 @@ class testMyStringAdder(unittest.TestCase):
 
     def test_thatTheAdderWorks(self):
         invalidLine = "Horse"
-        self.mock_reader.getContents.return_value = ["0 5 6 4 8", invalidLine, "5", "", "5 6 7 8"]
+        self.mock_reader.readArray.return_value = ["0 5 6 4 8", invalidLine, "5", "", "5 6 7 8"]
 
         self.MyStringAdder.run()
 
         self.mock_logger.log.assert_called_once_with(invalidLine)
         self.mock_writer.write.assert_called_once_with("\n23\nNaN\n5\n0\n26")
-
