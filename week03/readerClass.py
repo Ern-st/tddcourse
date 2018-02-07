@@ -1,10 +1,6 @@
 #!/usr/bin/env python3
-import os
 
 class reader:
-    
-    def __init__(self):
-        pass
         
     def getContents(self):
         file = open("input.txt", "r")
