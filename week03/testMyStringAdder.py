@@ -11,9 +11,14 @@ class testMyStringAdder(unittest.TestCase):
     def test_IHaveAClass(self):
         MyStringAdder()
 
-    @mock.patch('reader.reader.getContents')
+    @mock.patch('readerClass.reader.getContents')
     def test_ICanLoadContents(self, mock_reader_getContents):
-        mock_reader_getContents.return_value = ["test"]
+        expectedInput = ["test", "test2"]
+        mock_reader_getContents.return_value = expectedInput
+        
         MyReader = reader()
         StringAdder = MyStringAdder()
         StringAdder.loadInput(MyReader)
+        actualInput = StringAdder.getInput()
+
+        self.assertListEqual(expectedInput, actualInput)

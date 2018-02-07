@@ -3,8 +3,10 @@
 class MyStringAdder:
 
     def loadInput(self, reader):
-        input = reader.getContents()
-        print(input)
+        self.input = reader.getContents()
+
+    def getInput(self):
+        return self.input
     
     def run(self):
         pass
