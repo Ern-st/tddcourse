@@ -39,7 +39,6 @@ class MyStringAdder:
 
     def run(self):
         self.loadInput()
-        print(self.input)
         output = ""
         for line in self.input:
             result = self.addNumbers(line)
