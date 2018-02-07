@@ -43,6 +43,12 @@ class testMyStringAdder(unittest.TestCase):
         
         self.assertEqual(12, output)
 
+    def test_AddingABlankLineReturnsZero(self):
+        input = ""
+        output = self.MyStringAdder.addNumbers(input)
+
+        self.assertEqual(0, output)
+
     def test_AddingBogusReturnsNaNAndLogsAnError(self):
         input = "Horse"
         output = self.MyStringAdder.addNumbers(input)
@@ -51,4 +57,11 @@ class testMyStringAdder(unittest.TestCase):
         self.mock_logger.log.assert_called_once_with(input)
 
     def test_thatTheAdderWorks(self):
-        pass
+        invalidLine = "Horse"
+        self.mock_reader.getContents.return_value = ["0 5 6 4 8", invalidLine, "5", "", "5 6 7 8"]
+
+        self.MyStringAdder.run()
+
+        self.mock_logger.log.assert_called_once_with(invalidLine)
+        self.mock_writer.write.assert_called_once_with("\n23\nNaN\n5\n0\n26")
+

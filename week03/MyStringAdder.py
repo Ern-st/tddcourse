@@ -20,6 +20,8 @@ class MyStringAdder:
         self.logger.log(error)
 
     def addNumbers(self, line):
+        if len(line) == 0:
+            return 0
         try:
             numbers = [int(x) for x in line.split(" ")]
         except ValueError:
@@ -29,4 +31,9 @@ class MyStringAdder:
     
 
     def run(self):
-        pass
+        self.loadInput()
+        output = ""
+        for line in self.input:
+            result = self.addNumbers(line)
+            output += "\n{}".format(result)
+        self.writeOutput(output)
