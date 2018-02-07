@@ -10,26 +10,34 @@ from loggerClass import logger
 
 class testMyStringAdder(unittest.TestCase):
 
-    def setUp(self):
-        self.MyStringAdder = MyStringAdder()
+    @mock.patch('readerClass.reader')
+    @mock.patch('writerClass.writer')
+    @mock.patch('loggerClass.logger')
+    def setUp(self, mock_reader, mock_writer, mock_logger):
+        self.mock_reader = mock_reader
+        self.mock_writer = mock_writer
+        self.mock_logger = mock_logger
 
-    @mock.patch('readerClass.reader.getContents')
-    def test_ICanLoadContents(self, mock_reader_getContents):
+        self.MyStringAdder = MyStringAdder(self.mock_reader, self.mock_writer, self.mock_logger)
+
+    def test_ICanLoadContents(self):
         expectedInput = ["test", "test2"]
-        mock_reader_getContents.return_value = expectedInput
+        self.mock_reader.getContents.return_value = expectedInput
         
-        MyReader    = reader()
         StringAdder = self.MyStringAdder
-        StringAdder.loadInput(MyReader)
+        StringAdder.loadInput()
         actualInput = StringAdder.getInput()
 
         self.assertListEqual(expectedInput, actualInput)
 
-    @mock.patch('writerClass.writer.write')
     def test_ICanWriteOutput(self, mock_writer_write):
-        mock_writer_write.return_value = True
+        self.mock_writer.write.return_value = True
 
         MyWriter = writer()
         success = MyWriter.write(["test"])
 
         self.assertTrue(success)
+
+    def test_ICanAddNumbers(self):
+        input = "0 4 3 2 3"
+        output = self.MyStringAdder
