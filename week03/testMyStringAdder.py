@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 import unittest
 import unittest.mock as mock
-from testfixtures import Comparison as C
 
-from MyStringAdder import MyStringAdder
-from readerClass import reader
-from writerClass import writer
-from loggerClass import logger
+from MyStringAdder  import MyStringAdder
+from readerClass    import reader
+from writerClass    import writer
+from loggerClass    import logger
 
 class testMyStringAdder(unittest.TestCase):
 
@@ -19,6 +18,7 @@ class testMyStringAdder(unittest.TestCase):
         self.mock_logger = mock_logger
 
         self.MyStringAdder = MyStringAdder(self.mock_reader, self.mock_writer, self.mock_logger)
+        #self.MyStringAdder = MyStringAdder(reader(), writer(), logger())
 
     def test_ICanLoadContents(self):
         expectedInput = ["test", "test2"]
@@ -30,14 +30,21 @@ class testMyStringAdder(unittest.TestCase):
 
         self.assertListEqual(expectedInput, actualInput)
 
-    def test_ICanWriteOutput(self, mock_writer_write):
+    def test_ICanWriteOutput(self):
         self.mock_writer.write.return_value = True
 
-        MyWriter = writer()
-        success = MyWriter.write(["test"])
+        success = self.MyStringAdder.writeOutput(["test","test2"])
 
         self.assertTrue(success)
 
     def test_ICanAddNumbers(self):
         input = "0 4 3 2 3"
-        output = self.MyStringAdder
+        output = self.MyStringAdder.addNumbers(input)
+        
+        self.assertEqual(12, output)
+
+    def test_AddingBogusReturnsNaN(self):
+        input = "Horse"
+        output = self.MyStringAdder.addNumbers(input)
+
+        self.assertEqual("NaN", output)
