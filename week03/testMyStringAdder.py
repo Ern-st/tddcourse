@@ -11,10 +11,12 @@ from loggerClass    import logger
 class testMyStringAdder(unittest.TestCase):
 
     @mock.patch('readerClass.reader')
+    @mock.patch('readerClass.webReader')
     @mock.patch('writerClass.writer')
     @mock.patch('loggerClass.logger')
-    def setUp(self, mock_reader, mock_writer, mock_logger):
+    def setUp(self, mock_reader, mock_webReader, mock_writer, mock_logger):
         self.mock_reader = mock_reader
+        self.mock_webReader = mock_webReader
         self.mock_writer = mock_writer
         self.mock_logger = mock_logger
 
@@ -64,6 +66,18 @@ class testMyStringAdder(unittest.TestCase):
     def test_thatTheAdderWorks(self):
         invalidLine = "Horse"
         self.mock_reader.readArray.return_value = ["0 5 6 4 8", invalidLine, "5", "", "5 6 7 8"]
+
+        self.MyStringAdder.run()
+
+        self.mock_logger.log.assert_called_once_with(invalidLine)
+        self.mock_writer.write.assert_called_once_with("\n23\nNaN\n5\n0\n26")
+
+    @mock.patch('readerClass.urllib.request')
+    def test_thatTheAdderWorksWithAWebReader(self, mock_request):
+        self.MyStringAdder = MyStringAdder(webReader({"url":"httpsssss://someurl"}), self.mock_writer, self.mock_logger)
+
+        invalidLine = "github"
+        mock_request.urlopen.return_value.__enter__.return_value.read.return_value = "0 5 6 4 8\n{}\n5\n\n5 6 7 8".format(invalidLine).encode('utf-8')
 
         self.MyStringAdder.run()
 
