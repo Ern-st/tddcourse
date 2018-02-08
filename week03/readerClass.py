@@ -2,13 +2,10 @@
 import urllib.request
 
 class reader:
-
-    def TrimLines(self, lines):
-        return [x.rstrip() for x in lines]
         
     def readArray(self):
         file = open("input.txt", "r")
-        return self.TrimLines(file.readlines())
+        return file.readlines()
 
 class webReader(reader):
 
